@@ -1,0 +1,84 @@
+# depslib dependency file v1.0
+1550737198 source:/home/zak/Programmes/Pong/main.cpp
+	<SFML/Graphics.hpp>
+	"Ball.h"
+	"Bar.h"
+
+1550739000 source:/home/zak/Programmes/Pong/Ball.cpp
+	"Ball.h"
+	<string>
+	<iostream>
+
+1550738560 /home/zak/Programmes/Pong/Ball.h
+	<SFML/Graphics.hpp>
+	<string>
+	"Bar.h"
+	"CollisionManager.h"
+
+1550861138 /home/zak/Programmes/Pong/include/CollisionManager.h
+	"PSprite.h"
+
+1550861137 source:/home/zak/Programmes/Pong/src/CollisionManager.cpp
+	"CollisionManager.h"
+	<SFML/Graphics.hpp>
+	"Constants.h"
+	<memory>
+
+1550861189 source:/home/zak/Programmes/Pong/src/Bar.cpp
+	"Bar.h"
+	"PSprite.h"
+	"CollisionManager.h"
+
+1550861264 /home/zak/Programmes/Pong/include/Bar.h
+	<string>
+	"PSprite.h"
+
+1550861283 /home/zak/Programmes/Pong/include/Ball.h
+	<string>
+	<memory>
+	"PSprite.h"
+
+1550737317 /home/zak/Programmes/Pong/CollisionManager.h
+	<SFML/Graphics.hpp>
+
+1550655437 /home/zak/Programmes/Pong/Bar.h
+	<string>
+	<SFML/Graphics.hpp>
+	"CollisionManager.h"
+
+1550658660 source:/home/zak/Programmes/Pong/Bar.cpp
+	"Bar.h"
+
+1550739034 source:/home/zak/Programmes/Pong/CollisionManager.cpp
+	"CollisionManager.h"
+	"Ball.h"
+	<iostream>
+
+1550861335 source:/home/zak/Programmes/Pong/src/Ball.cpp
+	"Ball.h"
+	<iostream>
+	<vector>
+	<cstdlib>
+	"CollisionManager.h"
+	"Constants.h"
+
+1550860741 source:/home/zak/Programmes/Pong/src/main.cpp
+	<SFML/Graphics.hpp>
+	"Ball.h"
+	"Bar.h"
+	<vector>
+	"Constants.h"
+	<memory>
+	"CollisionManager.h"
+
+1550860346 /home/zak/Programmes/Pong/include/PSprite.h
+	<SFML/Graphics.hpp>
+	<string>
+	<vector>
+	<memory>
+
+1550861315 source:/home/zak/Programmes/Pong/src/PSprite.cpp
+	"PSprite.h"
+
+1550853583 /home/zak/Programmes/Pong/include/Constants.h
+
