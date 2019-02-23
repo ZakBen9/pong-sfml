@@ -82,3 +82,66 @@
 
 1550853583 /home/zak/Programmes/Pong/include/Constants.h
 
+1550916866 source:/home/zak/Pong/pong-sfml/src/Ball.cpp
+	"Ball.h"
+	<iostream>
+	<vector>
+	<cstdlib>
+	"CollisionManager.h"
+	"Constants.h"
+	"GameState.h"
+
+1550916068 /home/zak/Pong/pong-sfml/include/Ball.h
+	<string>
+	<memory>
+	"PSprite.h"
+
+1550860346 /home/zak/Pong/pong-sfml/include/PSprite.h
+	<SFML/Graphics.hpp>
+	<string>
+	<vector>
+	<memory>
+
+1550916297 /home/zak/Pong/pong-sfml/include/CollisionManager.h
+	"PSprite.h"
+
+1550915924 /home/zak/Pong/pong-sfml/include/Constants.h
+
+1550909826 source:/home/zak/Pong/pong-sfml/src/Bar.cpp
+	"Bar.h"
+	"PSprite.h"
+	"CollisionManager.h"
+
+1550861264 /home/zak/Pong/pong-sfml/include/Bar.h
+	<string>
+	"PSprite.h"
+
+1550916542 source:/home/zak/Pong/pong-sfml/src/CollisionManager.cpp
+	"CollisionManager.h"
+	<SFML/Graphics.hpp>
+	"Constants.h"
+	<memory>
+	"GameState.h"
+
+1550909826 source:/home/zak/Pong/pong-sfml/src/PSprite.cpp
+	"PSprite.h"
+
+1550917306 source:/home/zak/Pong/pong-sfml/src/main.cpp
+	<SFML/Graphics.hpp>
+	"Ball.h"
+	"Bar.h"
+	<vector>
+	"Constants.h"
+	<memory>
+	"CollisionManager.h"
+	"GameState.h"
+
+1550917048 /home/zak/Pong/pong-sfml/include/GameState.h
+	<SFML/Graphics/Font.hpp>
+	<SFML/Graphics/Text.hpp>
+	<string>
+
+1550917562 source:/home/zak/Pong/pong-sfml/src/GameState.cpp
+	"GameState.h"
+	"Constants.h"
+

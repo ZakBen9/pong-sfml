@@ -12,6 +12,8 @@ const int BAR_SPEED=7;
 
 const int MAX_FPS=60;
 
+const int SCORE_FROM_BORDERS=60;
+const int SCORE_Y=30;
 
 
 #endif // CONSTANTS_H_INCLUDED

@@ -2,6 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include "Constants.h"
 #include <memory>
+#include "GameState.h"
 
 bool Coll2PSprite(PSprite& spr1, PSprite& spr2)       //Managing the collision between two PSprites
 {
@@ -57,7 +58,7 @@ bool CollBorderH(PSprite& spr)
     return 1;
 }
 
-bool CollBorderV(PSprite& spr)        //Manages collisions between a PSPrite and vertical borders
+bool CollBorderV(PSprite& spr,GameState& gameState)        //Manages collisions between a PSPrite and vertical borders
 {
     auto nxt=spr.nextMove();
 
@@ -66,14 +67,16 @@ bool CollBorderV(PSprite& spr)        //Manages collisions between a PSPrite and
         return 0;
     }
 
-    if(nxt->getPosition().x<0)
+    if(nxt->getPosition().x<=0)
     {
         spr.setPosition(0,spr.getPosition().y);
+        gameState.setScoreBlu(gameState.getScoreBlu()+1);
     }
 
-    else if(nxt->getLowerRight().x>WIN_WIDTH)
+    else if(nxt->getLowerRight().x>=WIN_WIDTH)
     {
         spr.setPosition(WIN_WIDTH-spr.getWidth(),spr.getPosition().y);
+        gameState.setScoreRed(gameState.getScoreRed()+1);
     }
 
 

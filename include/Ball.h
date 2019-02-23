@@ -11,13 +11,14 @@
 #include <string>
 #include <memory>
 #include "PSprite.h"
+class GameState;
 
 class Ball:public PSprite
 {
     public:
         Ball(const std::string&,float,float);
 
-        void motion(std::vector<std::shared_ptr<PSprite>> ,bool&);
+        void motion(std::vector<std::shared_ptr<PSprite>> ,GameState&);
 };
 
 #endif // BALL_H_INCLUDED

@@ -5,6 +5,7 @@
 #include "Constants.h"
 #include <memory>
 #include "CollisionManager.h"
+#include "GameState.h"
 
 using namespace sf;
 using namespace std;
@@ -13,24 +14,19 @@ int main()
 {
     RenderWindow app(sf::VideoMode(WIN_WIDTH, WIN_HEIGHT), "Pong XI: Tokyo Drift");       // Create the main window
 
+    GameState game("8-bit pusab.ttf");
+
     Ball ball("Sprites/ball.png",WIN_WIDTH/2,WIN_HEIGHT/2);             //Setting the ball
     ball.setDirectionX(BALL_SPEED_X);
 
-    /*Bar blu("Sprites/bluBar.png",WIN_WIDTH-BAR_FROM_BORDERS,WIN_HEIGHT/2);      //Setting the bars
-    Bar red("Sprites/redBar.png",BAR_FROM_BORDERS,WIN_HEIGHT/2);*/
 
     auto blu=make_shared<Bar>("Sprites/bluBar.png",WIN_WIDTH-BAR_FROM_BORDERS,WIN_HEIGHT/2);
     auto red=make_shared<Bar>("Sprites/redBar.png",BAR_FROM_BORDERS,WIN_HEIGHT/2);
 
-    /*vector<PSprite*> bars;                                          //Creating the vector and adding the two bars to it
-    bars.push_back(&blu);
-    bars.push_back(&red);*/
 
     vector<shared_ptr<PSprite>> bars;
     bars.push_back(blu);
     bars.push_back(red);
-
-    bool paused=1;
 
     bool z=0;
     bool s=0;
@@ -65,35 +61,35 @@ int main()
                         break;
 
                         case Keyboard::Up:
-                            if(!paused)
+                            if(!game.getPaused())
                             {
                                 up=1;
                             }
                         break;
 
                         case Keyboard::Down:                //To manage simultaneous key pressing we set booleans
-                            if(!paused)                     //linked to the pressed buttons and later make movements
+                            if(!game.getPaused())                     //linked to the pressed buttons and later make movements
                             {                               //based on their values
                                 down=1;
                             }
                         break;
 
                         case Keyboard::Z:
-                            if(!paused)
+                            if(!game.getPaused())
                             {
                                 z=1;
                             }
                         break;
 
                         case Keyboard::S:
-                            if(!paused)
+                            if(!game.getPaused())
                             {
                                 s=1;
                             }
                         break;
 
                         case Keyboard::Space:
-                            paused=!paused;
+                            game.setPaused();
                         break;
 
                         default:
@@ -107,28 +103,28 @@ int main()
                     switch (event.key.code)             // The released key
                     {
                         case Keyboard::Up:
-                            if(!paused)                 //Stopping the movement when the keys are released
+                            if(!game.getPaused())                 //Stopping the movement when the keys are released
                             {
                                 up=0;
                             }
                         break;
 
                         case Keyboard::Down:
-                            if(!paused)
+                            if(!game.getPaused())
                             {
                                 down=0;
                             }
                         break;
 
                         case Keyboard::Z:
-                            if(!paused)
+                            if(!game.getPaused())
                             {
                                 z=0;
                             }
                         break;
 
                         case Keyboard::S:
-                            if(!paused)
+                            if(!game.getPaused())
                             {
                                 s=0;
                             }
@@ -145,7 +141,7 @@ int main()
             }
         }
 
-        if(paused)
+        if(game.getPaused())
         {
             z=0;                    //Stopping the movements if the game is paused
             s=0;
@@ -155,45 +151,38 @@ int main()
 
         if(z)                               //Verifying the booleans to make movements
         {
-            /*red.setDirectionY(-BAR_SPEED);
-            red.motion();*/
             red->setDirectionY(-BAR_SPEED);
             red->motion();
         }
 
         if(s)
         {
-            /*red.setDirectionY(BAR_SPEED);
-            red.motion();*/
             red->setDirectionY(BAR_SPEED);
             red->motion();
         }
 
         if(up)
         {
-            /*blu.setDirectionY(-BAR_SPEED);
-            blu.motion();*/
             blu->setDirectionY(-BAR_SPEED);
             blu->motion();
         }
 
         if(down)
         {
-            /*blu.setDirectionY(BAR_SPEED);
-            blu.motion();*/
             blu->setDirectionY(BAR_SPEED);
             blu->motion();
         }
 
-        if(!paused)
+        if(!game.getPaused())
         {
-            ball.motion(bars,paused);
+            ball.motion(bars,game);
         }
 
         app.clear();        // Clear screen
 
-
         app.draw(sp_bg);
+        app.draw(game.getTXTScoreBlu());
+        app.draw(game.getTXTScoreRed());
         app.draw(ball);     // Draw the sprite
         app.draw(*blu);
         app.draw(*red);
