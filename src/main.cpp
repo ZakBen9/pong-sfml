@@ -6,15 +6,17 @@
 #include <memory>
 #include "CollisionManager.h"
 #include "GameState.h"
+#include "Menu.h"
 
 using namespace sf;
 using namespace std;
 
 int main()
 {
-    RenderWindow app(sf::VideoMode(WIN_WIDTH, WIN_HEIGHT), "Pong XI: Tokyo Drift");       // Create the main window
+    RenderWindow app(sf::VideoMode(WIN_WIDTH, WIN_HEIGHT), "Pong XI: Tokyo Drift",Style::None);       // Create the main window
 
     GameState game("8-bit pusab.ttf");
+    Menu menu("title.TTF","PONG","Tokyo Drift");
 
     Ball ball("Sprites/ball.png",WIN_WIDTH/2,WIN_HEIGHT/2);             //Setting the ball
     ball.setDirectionX(BALL_SPEED_X);
@@ -89,7 +91,10 @@ int main()
                         break;
 
                         case Keyboard::Space:
-                            game.setPaused();
+                            if(game.getStarted())
+                                game.setPaused();
+                            else
+                                game.setStarted();
                         break;
 
                         default:
@@ -141,7 +146,7 @@ int main()
             }
         }
 
-        if(game.getPaused())
+        if(game.getPaused() || !game.getStarted())
         {
             z=0;                    //Stopping the movements if the game is paused
             s=0;
@@ -173,20 +178,27 @@ int main()
             blu->motion();
         }
 
-        if(!game.getPaused())
+        if(!game.getPaused() && game.getStarted())
         {
             ball.motion(bars,game);
         }
 
         app.clear();        // Clear screen
 
-        app.draw(sp_bg);
-        app.draw(game.getTXTScoreBlu());
-        app.draw(game.getTXTScoreRed());
-        app.draw(ball);     // Draw the sprite
-        app.draw(*blu);
-        app.draw(*red);
+        if(game.getStarted())
+        {
+            app.draw(sp_bg);
+            app.draw(game.getTXTScoreBlu());
+            app.draw(game.getTXTScoreRed());
+            app.draw(ball);                     // Draw the sprite
+            app.draw(*blu);
+            app.draw(*red);
+        }
 
+        else
+        {
+            menu.display(app);
+        }
 
         app.display();      // Update the window
 

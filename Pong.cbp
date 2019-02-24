@@ -46,11 +46,13 @@
 		<Unit filename="include/CollisionManager.h" />
 		<Unit filename="include/Constants.h" />
 		<Unit filename="include/GameState.h" />
+		<Unit filename="include/Menu.h" />
 		<Unit filename="include/PSprite.h" />
 		<Unit filename="src/Ball.cpp" />
 		<Unit filename="src/Bar.cpp" />
 		<Unit filename="src/CollisionManager.cpp" />
 		<Unit filename="src/GameState.cpp" />
+		<Unit filename="src/Menu.cpp" />
 		<Unit filename="src/PSprite.cpp" />
 		<Unit filename="src/main.cpp" />
 		<Extensions>
